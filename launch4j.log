@@ -1,0 +1,19 @@
+
+
+Version:	3.50
+CmdLine:	C:\testedisplay\testedisplay.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\testedisplay\.
+Requires JDK:	Yes
+Requires 64-Bit: Yes
+Java min ver:	1.021.000
+Java max ver:	1.022.000
+JRE paths:	jdk-21
+Check launcher:	C:\testedisplay\jdk-21\bin\javaw.exe (OK)
+Check javac:	C:\testedisplay\jdk-21\bin\javac.exe (OK)
+Version string: 1.021.000_006 / 64-Bit (OK)
+Launcher:	C:\testedisplay\jdk-21\bin\javaw.exe
+Launcher args:	-jar "C:\testedisplay\testedisplay.exe"
+Args length:	39/32768 chars
+Exit code:	0
