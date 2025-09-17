@@ -42,6 +42,10 @@ Este aplicativo permite a comunicação via Serial (RS-232/RS-485) ou TCP/IP, of
     java -jar target/testedisplay-1.0.0-jar-with-dependencies.jar
     ```
 
+## 💿 Aplicação Executável (EXE)
+
+Para conveniência, uma versão executável para Windows (`.exe`) está disponível na pasta `dist/`. Você pode usar este arquivo em vez de compilar o projeto manualmente.
+
 ## 🖥️ Como Usar
 
 1.  **Conexão:** No topo da janela, escolha o tipo de conexão (Serial ou IP), preencha os dados e clique em "Conectar". O status da conexão será exibido.
@@ -68,3 +72,5 @@ Este aplicativo permite a comunicação via Serial (RS-232/RS-485) ou TCP/IP, of
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para obter mais detalhes (atualmente vazio).
+
+![alt text](image.png)
