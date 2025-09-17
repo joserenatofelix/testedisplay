@@ -6,7 +6,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>testedisplay</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
     <packaging>jar</packaging>
 
     <name>WT Display Tester</name>
@@ -36,6 +36,19 @@
 
     <build>
         <plugins>
+            <!-- Plugin para configurar o MANIFEST.MF -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.example.testedisplay.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
             <!-- Plugin para gerar um jar executável com dependências -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

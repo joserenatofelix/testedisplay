@@ -1,9 +1,0 @@
-[2025-07-31 14:56:06][DEBUG] Configurações carregadas.
-[2025-07-31 14:56:06][DEBUG] Portas seriais detectadas.
-[2025-07-31 14:56:06][INFO] Aplicação iniciada.
-[2025-07-31 14:56:17][ERROR] Falha ao abrir porta serial: COM3
-[2025-07-31 14:56:17][ERROR] Falha ao conectar serial: COM3
-[2025-07-31 14:56:28][ERROR] Tentativa de enviar sem conexão ativa.
-[2025-07-31 14:56:30][ERROR] Tentativa de enviar sem conexão ativa.
-[2025-07-31 14:56:35][ERROR] Tentativa de enviar sem conexão ativa.
-[2025-07-31 14:57:05][INFO] Aplicação encerrada.

@@ -1,4 +1,0 @@
-[2025-07-31 15:39:52][DEBUG] Configurações carregadas.
-[2025-07-31 15:39:52][DEBUG] Portas seriais detectadas.
-[2025-07-31 15:39:52][INFO] Aplicação iniciada.
-[2025-07-31 15:39:55][INFO] Aplicação encerrada.

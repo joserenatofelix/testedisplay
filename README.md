@@ -1,138 +1,70 @@
-# 🖥️ WT Display Tester
+# Testador para Painel de LEDs WT-DISPLAY
 
-- Aplicativo Java Swing para teste de comunicação com display TOTVS via Serial (RS232/RS485) ou TCP/IP.
-- Permite enviar comandos, visualizar logs, exportar para PDF e salvar configurações de teste.
+![Versão 2.0](https://img.shields.io/badge/version-2.0-blue)
 
-# ✨ Funcionalidades principais
+Uma ferramenta de desktop em Java Swing para testes de comunicação e funcionalidade com o painel de LEDs **WT-DISPLAY** da Weightech.
 
-✅ Detecção automática de portas seriais
-✅ Envio de comandos customizados ou padrões (CommandService)
-✅ Logging detalhado (INFO, DEBUG, ERROR) com arquivos de log (LogService)
-✅ Leitura assíncrona em thread para Serial (SerialService) e TCP (TcpService)
-✅ Exportação de logs para PDF
-✅ Configurações persistentes (ConfigManager)
+Este aplicativo permite a comunicação via Serial (RS-232/RS-485) ou TCP/IP, oferecendo tanto um terminal de baixo nível para envio de comandos de configuração quanto uma interface de alto nível para controle visual do painel através do Protocolo W12.
 
-## 🛠️ Estrutura do projeto
+---
 
-Pacote / Classe             Função
+## ✨ Funcionalidades
 
-- Main                        Ponto de entrada da aplicação
-- gui.MainFrame               Interface Swing (JFrame) com botões, campos e logs
-- service.SerialService       Comunicação serial: conecta, envia, lê dados em thread
-- service.TcpService          Comunicação TCP/IP: conecta, envia, lê dados em thread
-- service.CommandService      Geração de comandos padrão para o dide onde enviar (Serial ou TCP)
-- service.LogService          Decide onde enviar (Serial ou TCP)
-- service.ConnectionManager   Gerencia config.properties
-- model.ConfigManager        Salva e carrega configurações em config.properties
+*   **Duplo Modo de Conexão:** Conecte-se ao painel via porta Serial ou soquete TCP/IP.
+*   **Detecção de Portas:** Detecção automática das portas seriais disponíveis.
+*   **Terminal de Comandos:** Uma interface para enviar comandos de texto (ex: `Config`, `Save`, `Protocol=W01`) e visualizar as respostas brutas do painel.
+*   **Painel de Controle W12:** Uma interface gráfica completa para testar as funcionalidades visuais do painel (semáforos, bargraph, mensagens pré-definidas) sem precisar montar os pacotes de bytes manualmente.
+*   **Logging Avançado:** Todos os comandos enviados e dados recebidos são exibidos na tela e salvos em arquivos de log com data e hora.
+*   **Gerenciamento de Configs:** O aplicativo salva suas últimas configurações de conexão (porta, IP, etc.) para facilitar o uso futuro.
 
+## 🛠️ Pré-requisitos
 
-## 🧰 Tecnologias usadas
+*   **Java JDK 21** ou superior.
+*   **Apache Maven** para compilação.
 
-- Java 21
-- Maven
-- IDE (Eclipse ou IntelliJ) ou terminal
-- jSerialComm – comunicação serial
-- iTextPDF – exportação de logs em PDF (para futuras versões)
+## 🚀 Como Compilar e Executar
 
-## 📦 Estrutura do projeto
-pgsql
-Copiar
-Editar
-testedisplay/
-├── pom.xml
-├── .project
-├── .classpath
-├── README.md
-├── logs/                       ← arquivos de log gerados dinamicamente
-└── src/
-    └── main/
-        └── java/com/example/testedisplay/
-            ├── Main.java                          ← classe principal
-            ├── gui/MainFrame.java                 ← interface Swing
-            ├── model/ConfigManager.java           ← carrega/salva configurações
-            └── service/
-                ├── CommandService.java            ← gera comandos prontos
-                ├── ConnectionManager.java         ← gerencia conexões Serial/TCP
-                ├── LogService.java                ← registra logs com níveis
-                ├── SerialService.java             ← comunicação Serial
-                └── TcpService.java                ← comunicação TCP
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/seu-usuario/testedisplay.git
+    cd testedisplay
+    ```
 
-## 🚀 Como compilar e executar
+2.  **Compile o projeto com Maven:**
+    O comando abaixo irá baixar as dependências e criar um arquivo JAR executável.
+    ```bash
+    mvn clean package
+    ```
 
-### Passo a passo no terminal
+3.  **Execute a aplicação:**
+    O arquivo JAR final será criado no diretório `target/`. Use o seguinte comando para iniciar:
+    ```bash
+    java -jar target/testedisplay-1.0.0-jar-with-dependencies.jar
+    ```
 
-1. Clone ou extraia o projeto em sua máquina
+## 🖥️ Como Usar
 
-git clone https://github.com/seuusuario/testedisplay.git
-cd testedisplay
+1.  **Conexão:** No topo da janela, escolha o tipo de conexão (Serial ou IP), preencha os dados e clique em "Conectar". O status da conexão será exibido.
 
-2. Compile e gere o jar:
+2.  **Terminal de Comandos:**
+    *   Use esta aba para enviar comandos de configuração, como `Config`, `Save`, `SerialSettings=...`, etc.
+    *   Os comandos enviados e as respostas recebidas aparecerão nas áreas de texto.
 
-mvn clean package
-O jar será gerado em:
-target/testedisplay-1.0.0-jar-with-dependencies.jar
+3.  **Protocolo W12:**
+    *   Use esta aba para controlar os recursos visuais do painel.
+    *   Selecione as cores e o modo dos semáforos, escolha a mensagem, defina o valor do peso e do bargraph usando os controles visuais.
+    *   Clique em **"Enviar Pacote W12"** para enviar o comando ao painel.
 
-Para rodar: java -jar target/testedisplay-1.0.0-jar-with-dependencies.jar
+## 🧰 Dependências
 
-### Passo a passo no Eclipse
+*   **jSerialComm:** Biblioteca para comunicação via porta serial em Java.
+*   **iTextPDF:** Biblioteca para a funcionalidade de exportação de logs para PDF.
 
-1. Clone ou extraia o projeto em sua máquina
+## ✒️ Autor
 
-File → Import → Existing Maven Project
-
-Selecione a pasta onde está o pom.xml
-
-Final
- 
- ### pass a passo no intellij
-
-1. Clone ou extraia o projeto em sua máquina
-
-File → Open → Selecione a pasta onde está o pom.xml
-
-Final
-
-## 📡 Comunicação Serial & TCP
-
-Serviço                 O que faz
-
-SerialService           Conecta na porta (ex: COM3), cria thread que lê dados recebidos e loga, envia comandos em UTF-8
-TcpService              Conecta no IP e porta (ex: 192.168.1.100:1234), cria thread que lê dados recebidos e loga, envia comandos em UTF-8
-
-Todos os dados recebidos são registrados como DEBUG no log.
-
-## 📝 Logs
-
-LogService              Registra logs em arquivo e console, com níveis INFO, DEBUG e ERROR
-
-Arquivo de log gerado em logs/testedisplay.log
-
-## 🔧 Configurações
-
-ConfigManager           Salva e carrega configura
-
- ## 📤 Exportação PDF
-
-- Clica em Exportar Log para PDF na UI
-- Gera PDF no mesmo diretório com timestamp no nome
-
-## 🏁 Encerramento seguro
-
-- Desconecta portas / sockets
-- Interrompe threads leitoras
-- Fecha arquivos de log
-- Salva config.properties
-
-## ✅ Conclusão
-
-Projeto pronto para rodar localmente, documentado e modular.
-Suporte a testes de display TOTVS com flexibilidade: Serial (RS232/RS485) ou TCP/IP.
-
-Autor: Renato Félix
-        Versão: 1.0.0
-
-Dúvidas? Melhorias? Abra um issue ou envie pull request!
+*   **Renato Félix** (Desenvolvedor Original)
+*   **Gemini** (Refatoração e implementação do W12)
 
 ## 📝 Licença
 
-Este projeto está sob a licença MIT. Consulte o arquivo LICENSE para obter mais detalhes.
+Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para obter mais detalhes (atualmente vazio).
