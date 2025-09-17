@@ -67,10 +67,9 @@ Para conveniência, uma versão executável para Windows (`.exe`) está disponí
 ## ✒️ Autor
 
 *   **Renato Félix** (Desenvolvedor Original)
-*   **Gemini** (Refatoração e implementação do W12)
 
 ## 📝 Licença
 
-Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para obter mais detalhes (atualmente vazio).
+Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE`. para obter mais detalhes (atualmente vazio).
 
 ![alt text](image.png)
